@@ -16,4 +16,12 @@ window.onload = function() {
             }
         }
     }
+    
+    let ind = document.querySelector('.tab_active');
+    let indCont = document.querySelector('.tab__content_active');
+
+    ind.addEventListener('click', function(){
+        indCont.style.display = "block";
+    });
+    
 }
