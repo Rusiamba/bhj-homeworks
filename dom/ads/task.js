@@ -10,7 +10,6 @@ setInterval(() => {
         } 
         else {        
             nextActiveItem = currentActiveItem.parentElement.getElementsByClassName("rotator__case").item(0);
-
             nextActiveItem.className = "rotator__case rotator__case_active";
             nextActiveItem.style.color = nextActiveItem.dataset.color;
             currentActiveItem.className = "rotator__case";
