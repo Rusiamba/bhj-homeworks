@@ -1,38 +1,44 @@
-const next = document.querySelector('.slider__arrow_next'),
-      prev = document.querySelector('.slider__arrow_prev'),
-      slides = document.querySelectorAll('.slider__items'),
-      slideItem = document.querySelectorAll('.slider__item');
+let imgItems = document.getElementsByClassName("slider__item");
+imgItems = Array.from(imgItems);
 
-
-let index = 0;
-
-const activeSlide = n => {
-    console.log(n);
-    for (slide of slideItem) {
-        slide.classList.remove('active');
+function reduceIndex(i) {    
+    let next = i - 1;
+    if(next < 0){        
+        imgItems[imgItems.length - 1].className = "slider__item slider__item_active";
+        imgItems[i].className = "slider__item";
     }
-    slideItem[n].classList.add('active');
+    else {
+        imgItems[next].className = "slider__item slider__item_active";
+        imgItems[i].className = "slider__item";
+    }    
 }
 
-const nextSlide = () => {
-    if(index === slideItem.length - 1) {
-        index = 0;
-        activeSlide(index);
-    } else {
-        index++;
-        activeSlide(index);
+function increaseIndex(i) {    
+    let next = i + 1;
+    if(next > imgItems.length - 1){
+        
+        imgItems[0].className = "slider__item slider__item_active";
+        imgItems[i].className = "slider__item";
     }
+    else {
+        imgItems[next].className = "slider__item slider__item_active";
+        imgItems[i].className = "slider__item";
+    }   
 }
 
-const prevSlide = () => {
-    if(index === 0) {
-        index = slideItem.length - 1
-        activeSlide(index);
-    } else {
-        index--;
-        activeSlide(index);
-    }
-}
+let arrows = document.getElementsByClassName("slider__arrow");
+arrows = Array.from(arrows);
+arrows.forEach(function(element) {
+    element.addEventListener("click", function(event){
+        let activeElement = document.getElementsByClassName("slider__item slider__item_active").item(0);
+        let i = imgItems.indexOf(activeElement);
 
-next.addEventListener('click', nextSlide);
-prev.addEventListener('click', prevSlide);
+            if(this.className.includes("slider__arrow_prev")){                
+                reduceIndex(i);
+            }
+
+            else if(this.className.includes("slider__arrow_next")){
+                increaseIndex(i);
+            }
+    });
+});
