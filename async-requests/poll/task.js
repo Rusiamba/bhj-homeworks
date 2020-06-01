@@ -3,7 +3,7 @@ let pa = document.getElementById('poll__answers');
 let str = '';
 let xhr = new XMLHttpRequest();
 
-xhr.open('GET', 'https://netology-slow-rest.herokuapp.com/poll.php')
+xhr.open('GET', 'https://netology-slow-rest.herokuapp.com/poll.php', true);
 xhr.addEventListener('readystatechange', function () {
     if (this.readyState == xhr.DONE && this.status == 200) {
         let txt = JSON.parse(this.responseText);
