@@ -67,8 +67,7 @@ class Autocomplete {
     this.list.innerHTML = html.join('');
   }
 
-  getMatches( text ) {
-    getMatches( text ) {
+  getMatches(text) {
     let optList = Array.from(this.input.options)      
     let filtArray = [];
     
@@ -83,13 +82,5 @@ class Autocomplete {
   return filtArray;
   }
 }
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
-  }
-}
-
-new Autocomplete( document.querySelector( '.autocomplete' ));
+  
+new Autocomplete( document.querySelector('.autocomplete'));
